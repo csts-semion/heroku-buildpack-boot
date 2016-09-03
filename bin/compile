@@ -93,7 +93,8 @@ fi
 
 boot_cmd=${BOOTBUILD_CMD:-"boot build"}
 echo "-----> Running: $boot_cmd"
-export PATH="$build/.bootbin:$PATH"
+# Hack to add reqs to path.
+export PATH="$build/.bootbin:$build/.heroku/sassc/bin:$build/.heroku/node/bin:$PATH"
 (cd $build && $boot_cmd 2>&1 | indent); echo ""
 
 echo -n "-----> Copying jars..."
